@@ -80,11 +80,13 @@ var main = function() {
         displayMeasurePrompts(benchmarkCalculator);
     };
 
+    /**
+     * Thanks to Max Beier, we provide a download of the current canvas.
+     */
     var downloadButton = document.getElementById('pngDownloadButton');
     downloadButton.onclick = function() {
         var canvas = document.getElementById('canvas');
         downloadButton.setAttribute('href', canvas.toDataURL("image/png"));
-        console.log('YEAAH!');
     };
 
     var loop = function(calculator) {
