@@ -13,10 +13,10 @@ var Calculator = function(marginOfError, approximateValue, canvas, colorCircle, 
 
     this.circlePoints = 0;
     this.squarePoints = 0;
-    this.totalPoints = function() { return this.circlePoints + this.squarePoints; }
+    this.totalPoints = function() { return this.circlePoints + this.squarePoints; };
     this.marginOfError = marginOfError;
     this.approximateValue = approximateValue;
-    this.realDeviation = function() { return Math.abs(Math.PI - this.approximateValue); }
+    this.realDeviation = function() { return Math.abs(Math.PI - this.approximateValue); };
     this.currentMarginOfError = 0;
     this.center = new Point(0.5, 0.5);
     this.randomPoint = new Point(0.0, 0.0);
@@ -46,7 +46,7 @@ var Calculator = function(marginOfError, approximateValue, canvas, colorCircle, 
             this.approximateValue = (4.0 * this.circlePoints) / this.totalPoints();
         }
 
-        this.currentMarginOfError = this.currentMarginOfError = Math.abs(Math.PI - this.approximateValue);;
+        this.currentMarginOfError = this.currentMarginOfError = Math.abs(Math.PI - this.approximateValue);
 
         return this.approximateValue;
     };
@@ -74,7 +74,7 @@ var Calculator = function(marginOfError, approximateValue, canvas, colorCircle, 
                 this.squarePoints++;
             }
 
-            this.approximateValue = (4.0 * this.circlePoints) / this.totalPoints()
+            this.approximateValue = (4.0 * this.circlePoints) / this.totalPoints();
             this.recursiveApproach();
         } else {
             this.currentMarginOfError = Math.abs(Math.PI - this.approximateValue);
