@@ -91,7 +91,7 @@ html body {
 	margin-top: 0;
 	padding-top: 34px;
 	margin-bottom: 0;
-	background-image:  url("http://1.f.ix.de/scale/geometry/996x419/q75/imgs/71/1/3/7/4/5/1/8/15091588094_11916e24c3_k-bc664af3636b4b4a.jpeg");
+	background-image:  url("http://www.nasa.gov/sites/default/files/20141220_171.131blend.jpg");
 	background-size: 100%;
 	background-color: #89437A;
 	background-position: center;
@@ -102,4 +102,9 @@ html body {
 
 .jumbotron h1, .jumbotron .h1 {
 	font-size: 42px;
+    text-shadow: 0px 5px 5px #A25E99;
+}
+
+.jumbotron p {
+    text-shadow: 0px 5px 5px #A25E99;
 }
