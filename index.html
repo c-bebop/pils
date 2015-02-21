@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="My first LiveScript Application.">
+    <meta name="author" content="Florian Willich">
+
+    <title>&#960;</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <div class="jumbotron">
+        <h1>&#960; &#8773; 3.14159265358979323846</h1>
+        <p><i>One: Mathematics is the language of nature.<br/>
+            Two: Everything around us can be represented <br/>and understood through numbers. <br/>
+            Three: If you graph the numbers of any system,<br> patterns emerge. Therefore, there <br>are patterns everywhere in nature.</i></p>
+        <p>Max Cohen, &#960; USA 1998</p><br><br/>
+        <p>This LiveScript application calculates the <br>approximate value of π with an Monte Carlo <br>algorithm, please visit
+            <a href="http://en.wikipedia.org/wiki/Pi#Geometry_and_trigonometry">Wikipedia</a> for more information.</p>
+        <br/><br><br><br><br><br><br><br>
+        <p>The background image shows irrigated fields <br>in the Saraha, shot by <a href="http://www.heise.de/ct/artikel/Alexander-Gerst-Da-mussten-wir-in-MacGyver-Manier-reparieren-2514587.html">Alexander Gerst</a> (ESA/NASA) from the ISS.</p>
+    </div>
+
+    <div class="container">
+
+        <br/>
+
+        <div class="row">
+
+            <div class="col-md-2">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Benchmark</h3>
+                    </div>
+                    <div class="panel-body">
+                        <button type="button" class="btn btn-default" id="benchmarkButton">Loop</button>
+                        <button type="button" class="btn btn-default" id="benchmarkRecursiveButton">Recursive</button>
+                        <p><br/>Time in Milliseconds:</p>
+                        <div class="prompt" id="bechmarkTime">N/A</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Output</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas class="canvas" id="canvas">
+                            PI
+                        </canvas>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Progress</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="progress">
+                            <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0">0%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Controls</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="slider" id="velocitySlider">
+                            <p><b>Velocity</b> (smaller &#8594; faster)</p> <div class="sliderValue" id="velocityValue">1</div>
+                            <input type="range" id="velocityInput" value="1.0" min="1.0" max="500.0" step="1"/>
+                        </div>
+
+                        <br/>
+
+                        <div class="slider" id="accuracySlider">
+                            <p><b>Accuracy</b></p><div class="sliderValue" id="accuracyValue">5</div>
+                            <input type="range" id="accuracyInput" value="5" min="1" max="9" step="1"/>
+                        </div>
+
+                        <button type="button" class="btn btn-default" id="startButton">Run</button>
+                        <button type="button"  class="btn btn-default" id="stopButton">Stop</button>
+                        <button type="button"  class="btn btn-default" id="restartButton">Restart</button>
+                        <a class="btn btn-default" id="pngDownloadButton" href="#" download="monteCarloPi">Download PNG</a>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Approximate &#960;</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="prompt" id="approximate">N/A</div>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Margin of Error</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="prompt" id="errorMargin">N/A</div>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Current Margin of Error</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="prompt" id="currentErrorMargin">N/A</div>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Points</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="prompt" id="points">N/A</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="pi.js"></script>
+    <script src="components.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

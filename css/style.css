@@ -1,0 +1,105 @@
+/**
+* Body Style (Background etc.)
+**/
+html body {
+	background-color: #3D3D3D;
+	font-family: 'Open Sans', Helvetica, Verdana, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.progress {
+	margin-left: 1em;
+	margin-right: 1em;
+	border-radius: 6px;
+	background-color: #D1D1D1;
+}
+
+.progress-bar {
+	background-color: #89437A;
+}
+
+.answer_text {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.row {
+	margin-right: 1em;
+	margin-left: 1em;
+}
+
+.well {
+	padding: 1em;
+	background-color: #F5F5F5;
+	margin: 1em;
+}
+
+.btn {
+
+}
+
+.btn-default {
+	margin-top: 1em;
+	color: #89437A;
+	background-color: #FFF;
+	border-color: #CCC;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+	color: #FFF;
+	background-color: #89437A;
+	border-color: #89437A;
+}
+
+.dropdown-toggle.btn-default {
+	color: #FFF;
+	background-color: #89437A;
+	border-color: #ADADAD;
+}
+
+.btn-primary {
+	color: #367E7B;
+	background-color: #FFF;
+	border-color: #CCC;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+	color: #FFF;
+	background-color: #89437A;
+	border-color: #89437A;
+}
+
+.panel-primary > .panel-heading {
+	color: #FFF;
+	background-color: #89437A;
+	border-color: #89437A;
+}
+
+.panel-primary {
+	border: 3px solid transparent;
+	border-radius: 0;
+	border-color: #89437A;
+}
+
+/**
+* ========================================================================
+* JUMBOTRON
+* ========================================================================
+**/
+.jumbotron {
+	margin-top: 0;
+	padding-top: 34px;
+	margin-bottom: 0;
+	background-image:  url("http://1.f.ix.de/scale/geometry/996x419/q75/imgs/71/1/3/7/4/5/1/8/15091588094_11916e24c3_k-bc664af3636b4b4a.jpeg");
+	background-size: 100%;
+	background-color: #89437A;
+	background-position: center;
+	background-repeat: repeat-x;
+	color: #FFF;
+}
+
+
+.jumbotron h1, .jumbotron .h1 {
+	font-size: 42px;
+}
