@@ -19,10 +19,14 @@ var main = function() {
         return computeVelocityInMs(max, current);
     };
 
+    var marginOfError = function() {
+        return Math.pow(0.1, getSliderValue(accuracySlider));
+    };
+
     var accuracySlider = document.getElementById('accuracySlider');
-    var marginOfError = Math.pow(0.1, getSliderValue(accuracySlider));
-    var calculator = new Calculator(marginOfError, 4, canvas, 'rgb(55, 137, 13)', 'rgb(137, 9, 139)', 'rgb(255, 0, 0)');
-    var benchmarkCalculator = new Calculator(marginOfError, 4, canvas, 'rgb(55, 137, 13)', 'rgb(137, 9, 139)', 'rgb(255, 0, 0)');
+
+    var calculator = new Calculator(marginOfError(), 4, canvas, 'rgb(55, 137, 13)', 'rgb(137, 9, 139)', 'rgb(255, 0, 0)');
+    var benchmarkCalculator = new Calculator(marginOfError(), 4, canvas, 'rgb(55, 137, 13)', 'rgb(137, 9, 139)', 'rgb(255, 0, 0)');
     var render = null;
     var started = false;
     var progressBarValue = 0;
@@ -55,8 +59,7 @@ var main = function() {
 
     };
 
-    var clearButton = document.getElementById('restartButton');
-    clearButton.onclick = function() {
+    var restartButton = document.getElementById('restartButton').onclick = function() {
 
         if (started) {
             window.clearInterval(render);
@@ -71,26 +74,26 @@ var main = function() {
 
     };
 
-    var benchButton = document.getElementById('benchmarkButton');
-    benchButton.onclick = function() {
-        marginOfError = Math.pow(0.1, getSliderValue(accuracySlider));
+    var benchmark = function(loop) {
         var start = new Date().getTime();
-        var approx = benchmarkCalculator.benchmark(marginOfError, false);
+        benchmarkCalculator.benchmark(marginOfError(), loop);
         var end = new Date().getTime();
-        var time = end - start;
+        return end - start;
+    };
+
+    var benchmarkAndDisplay = function(loop) {
+        var time = benchmark(loop);
         displayPrompt(document.getElementById('bechmarkTime'), time);
         displayMeasurePrompts(benchmarkCalculator);
     };
 
-    var benchRecursiveButton = document.getElementById('benchmarkRecursiveButton');
-    benchRecursiveButton.onclick = function() {
-        marginOfError = Math.pow(0.1, getSliderValue(accuracySlider));
-        var start = new Date().getTime();
-        var approx = benchmarkCalculator.benchmark(marginOfError, true);
-        var end = new Date().getTime();
-        var time = end - start;
-        displayPrompt(document.getElementById('bechmarkTime'), time);
-        displayMeasurePrompts(benchmarkCalculator);
+    var benchButton = document.getElementById('benchmarkButton');
+    benchButton.onclick = function() {
+        benchmarkAndDisplay(true);
+    };
+
+    var benchRecursiveButton = document.getElementById('benchmarkRecursiveButton').onclick = function() {
+        benchmarkAndDisplay(false);
     };
 
     /**
@@ -103,8 +106,7 @@ var main = function() {
     };
 
     var loop = function(calculator) {
-        marginOfError = Math.pow(0.1, getSliderValue(accuracySlider));
-        calculator.makeFrame(render, marginOfError);
+        calculator.makeFrame(render, marginOfError());
         progressBarValue = progressBarValue < calculator.calculateProgress() ? calculator.calculateProgress() : progressBarValue;
         displayProgressBar(progressBar, progressBarValue);
         displayMeasurePrompts(calculator);
