@@ -8,17 +8,16 @@ var main = function() {
      */
     var velocitySlider = document.getElementById('velocitySlider');
 
-    var computeVelocity = function() {
-        var max = document.getElementById('velocityInput').getAttribute('max');
-        console.log("Max: " + max);
-        var current = getSliderValue(velocitySlider);
-        var new_velocity = max - (current - 1);
-        console.log("New Velocity: " + new_velocity);
-
-        return new_velocity;
+    var computeVelocityInMs = function(max, currentValue) {
+        return max - (currentValue - 1);
     };
 
-    var velocity = computeVelocity();
+    var velocity = function() {
+        var max = document.getElementById('velocityInput').getAttribute('max');
+        var current = getSliderValue(velocitySlider);
+
+        return computeVelocityInMs(max, current);
+    };
 
     var accuracySlider = document.getElementById('accuracySlider');
     var marginOfError = Math.pow(0.1, getSliderValue(accuracySlider));
@@ -46,13 +45,11 @@ var main = function() {
     startButton.onclick = function() {
 
         if (!started) {
-            velocity = computeVelocity();
-            render = setInterval( function() { loop(calculator); }, velocity);
+            render = setInterval( function() { loop(calculator); }, velocity());
             started = true;
         } else {
             window.clearInterval(render);
-            velocity = computeVelocity();
-            render = setInterval(function() { loop(calculator); }, velocity);
+            render = setInterval(function() { loop(calculator); }, velocity());
             started = true;
         }
 
@@ -69,8 +66,7 @@ var main = function() {
         calculator.clear();
         progressBarValue = 0;
 
-        velocity = computeVelocity();
-        render = setInterval(function() { loop(calculator); }, velocity);
+        render = setInterval(function() { loop(calculator); }, velocity());
         started = true;
 
     };
