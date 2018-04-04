@@ -88,10 +88,10 @@ var Calculator = function(marginOfError, approximateValue, canvas, colorCircle, 
         this.vector.end = this.randomPoint;
 
         if (this.vector.length() <= 0.5) {
-            canvas.drawRelativePoint(this.randomPoint, 3, colorCircle);
+            canvas.drawRelativePoint(this.randomPoint, 1, colorCircle);
             this.circlePoints++;
         } else {
-            canvas.drawRelativePoint(this.randomPoint, 3, colorSquare);
+            canvas.drawRelativePoint(this.randomPoint, 1, colorSquare);
             this.squarePoints++;
         }
 
